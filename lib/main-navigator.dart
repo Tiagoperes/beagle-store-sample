@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sample/routes/index.dart';
 
+import 'beagle.dart';
+
 class MainNavigator extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _MainNavigator();
+  State<StatefulWidget> createState() => MainNavigatorState();
 }
 
-class _MainNavigator extends State<MainNavigator> {
+class MainNavigatorState extends State<MainNavigator> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
   int currentIndex = 0;
+  int numberOfItemsInCart = 0;
 
   Route _onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(builder: (_) => routes[settings.name]!(settings.arguments));
@@ -31,9 +34,29 @@ class _MainNavigator extends State<MainNavigator> {
 
   _buildBottomNavBar() {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Products'),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: 'Cart'),
+        BottomNavigationBarItem(
+          icon: Stack(clipBehavior: Clip.none, children: [
+            Icon(Icons.shopping_cart_outlined),
+            Positioned(
+              left: 18,
+              top: -4,
+              child: Opacity(opacity: numberOfItemsInCart > 0 ? 1 : 0, child: Container(
+                padding: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Text(
+                  '$numberOfItemsInCart',
+                  style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                ),
+              )),
+            ),
+          ]),
+          label: 'Cart',
+        ),
         BottomNavigationBarItem(icon: Icon(Icons.account_box_outlined), label: 'Orders'),
         BottomNavigationBarItem(icon: Icon(Icons.exit_to_app), label: 'Exit'),
       ],
@@ -46,6 +69,18 @@ class _MainNavigator extends State<MainNavigator> {
         setState(() => currentIndex = index);
       },
     );
+  }
+
+  updateCartCount(int numberOfElementsInCart) {
+    setState(() {
+      this.numberOfItemsInCart = numberOfElementsInCart;
+    });
+  }
+
+  @override
+  void initState() {
+    beagleService.globalContext.set([], 'cart');
+    super.initState();
   }
 
   @override

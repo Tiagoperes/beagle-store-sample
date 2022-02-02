@@ -23,6 +23,7 @@ class _ProductItemBuilder extends ComponentBuilder {
     onPressBuy: element.getAttributeValue('onPressBuy'),
     onPressDetails: element.getAttributeValue('onPressDetails'),
     price: element.getAttributeValue('price'),
+    inCart: element.getAttributeValue('inCart'),
     title: element.getAttributeValue('title'),
   );
 }

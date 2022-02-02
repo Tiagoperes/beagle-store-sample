@@ -19,23 +19,17 @@ import 'dart:io';
 import 'package:beagle/beagle.dart';
 import 'package:beagle_components/beagle_components.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:sample/beagle-actions.dart';
 
 import 'beagle-components/index.dart';
 import 'beagle-operations.dart';
 
 final localhost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
 
-Map<String, ActionHandler> myCustomActions = {
-  'custom:log': ({required action, required view, required element, required context}) {
-    debugPrint(action.getAttributeValue('message'));
-  }
-};
-
 final beagleService = BeagleService(
   baseUrl: 'http://$localhost:3000/beagle',
   environment: kDebugMode ? BeagleEnvironment.debug : BeagleEnvironment.production,
   components: {...defaultComponents, ...components},
-  actions: {...myCustomActions, ...defaultActions},
+  actions: {...actions, ...defaultActions},
   operations: operations,
 );

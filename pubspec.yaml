@@ -23,8 +23,8 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
-  beagle: ^2.0.0-rc1
-  beagle_components: ^2.0.0-rc1
+  beagle: ^2.0.0-rc2
+  beagle_components: ^2.0.0-rc2
   money2: ^3.1.2
   flutter:
     sdk: flutter
