@@ -24,7 +24,7 @@ environment:
 
 dependencies:
   beagle: ^2.0.0-rc3
-  beagle_components: ^2.0.0-rc3
+  beagle_components: ^2.0.0-rc2
   money2: ^3.1.2
   flutter:
     sdk: flutter
