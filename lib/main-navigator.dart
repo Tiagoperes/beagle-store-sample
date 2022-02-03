@@ -14,7 +14,13 @@ class MainNavigatorState extends State<MainNavigator> {
   int numberOfItemsInCart = 0;
 
   Route _onGenerateRoute(RouteSettings settings) {
-    return MaterialPageRoute(builder: (_) => routes[settings.name]!(settings.arguments));
+    final arguments = settings.arguments == null
+      ? <String, String>{}
+      : settings.arguments as Map<String, String>;
+    WidgetsBinding.instance?.addPostFrameCallback((_) => setState(() =>
+      currentIndex = routes.keys.toList(growable: false).indexOf(settings.name!)
+    ));
+    return MaterialPageRoute(builder: (_) => routes[settings.name]!(arguments));
   }
 
   _buildNavigator() {
@@ -25,8 +31,9 @@ class MainNavigatorState extends State<MainNavigator> {
       child: Scaffold(
         body: Navigator(
           key: _navigatorKey,
-          initialRoute: "products",
+          initialRoute: "cart",
           onGenerateRoute: _onGenerateRoute,
+          //observers: [observer],
         ),
       ),
     );
@@ -66,7 +73,6 @@ class MainNavigatorState extends State<MainNavigator> {
       showUnselectedLabels: true,
       onTap: (index) {
         _navigatorKey.currentState!.pushNamed(routes.keys.elementAt(index));
-        setState(() => currentIndex = index);
       },
     );
   }
@@ -80,6 +86,8 @@ class MainNavigatorState extends State<MainNavigator> {
   @override
   void initState() {
     beagleService.globalContext.set([], 'cart');
+    _buildNavigator();
+    _buildBottomNavBar();
     super.initState();
   }
 
