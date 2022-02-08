@@ -7,4 +7,10 @@ Map<String, Operation> operations = {
     final String currency = args[1];
     return Money.fromNum(price, code: currency).toString();
   },
+  'sumProducts': (List<dynamic> args) {
+    final List<dynamic> products = args[0];
+    double value = 0;
+    products.forEach((element) => value += element['price']);
+    return value;
+  },
 };

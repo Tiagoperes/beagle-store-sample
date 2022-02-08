@@ -31,7 +31,7 @@ class MainNavigatorState extends State<MainNavigator> {
       child: Scaffold(
         body: Navigator(
           key: _navigatorKey,
-          initialRoute: "cart",
+          initialRoute: "products",
           onGenerateRoute: _onGenerateRoute,
           //observers: [observer],
         ),
