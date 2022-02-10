@@ -1,6 +1,5 @@
 import 'package:beagle_components/beagle_components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/button_style.dart';
 import 'package:flutter/widgets.dart';
 
 class CustomTheme extends BeagleTheme {
