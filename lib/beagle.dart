@@ -18,7 +18,6 @@ import 'dart:io';
 
 import 'package:beagle/beagle.dart';
 import 'package:beagle_components/beagle_components.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sample/beagle-actions.dart';
 
 import 'beagle-components/index.dart';
@@ -28,7 +27,7 @@ final localhost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
 
 final beagleService = BeagleService(
   baseUrl: 'http://$localhost:3000/beagle',
-  environment: kDebugMode ? BeagleEnvironment.debug : BeagleEnvironment.production,
+  watchInterval: 100,
   components: {...defaultComponents, ...components},
   actions: {...actions, ...defaultActions},
   operations: operations,
