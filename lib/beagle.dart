@@ -27,7 +27,7 @@ final localhost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
 
 final beagleService = BeagleService(
   baseUrl: 'http://$localhost:3000/beagle',
-  watchInterval: 100,
+  watchInterval: 1000,
   components: {...defaultComponents, ...components},
   actions: {...actions, ...defaultActions},
   operations: operations,

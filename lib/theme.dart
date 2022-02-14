@@ -18,11 +18,27 @@ class CustomTheme extends BeagleTheme {
     ),
   };
 
+  final Map<String, String> images = {
+    'check': 'images/check.png'
+  };
+
   @override
   TextStyle textStyle(String id) {
     return textMap[id] ?? TextStyle();
   }
 
   @override
-  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+  ButtonStyle? buttonStyle(String id) {
+    return null;
+  }
+
+  @override
+  String? image(String id) {
+    return images[id];
+  }
+
+  @override
+  BeagleNavigationBarStyle? navigationBarStyle(String id) {
+    return null;
+  }
 }
