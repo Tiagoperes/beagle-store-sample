@@ -1,3 +1,4 @@
+import 'package:beagle/beagle.dart';
 import 'package:flutter/widgets.dart';
 
 class Orders extends StatelessWidget {
@@ -7,6 +8,6 @@ class Orders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Order: $orderId'));
+    return RootNavigator(initialRoute: RemoteView('/order/$orderId'), screenBuilder: (widget, _) => widget);
   }
 }

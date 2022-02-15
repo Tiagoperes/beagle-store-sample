@@ -4,8 +4,12 @@ import 'package:flutter/widgets.dart';
 
 class CustomTheme extends BeagleTheme {
   final Map<String, TextStyle> textMap = {
-    'price': TextStyle(
+    'H4': TextStyle(
       fontSize: 18,
+    ),
+    'paymentStatus': TextStyle(
+      fontSize: 18,
+      color: Colors.green,
     ),
     'inCart': TextStyle(
       color: Colors.green,
