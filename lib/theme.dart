@@ -20,6 +20,9 @@ class CustomTheme extends BeagleTheme {
       fontSize: 24,
       fontWeight: FontWeight.bold
     ),
+    'bold': TextStyle(
+      fontWeight: FontWeight.bold,
+    ),
   };
 
   final Map<String, String> images = {
