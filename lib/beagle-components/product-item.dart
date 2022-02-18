@@ -5,7 +5,7 @@ class ProductItem extends StatelessWidget {
     required this.image,
     required this.title,
     required this.price,
-    this.inCart,
+    required this.inCart,
     required this.onPressBuy,
     required this.onPressDetails,
   });
